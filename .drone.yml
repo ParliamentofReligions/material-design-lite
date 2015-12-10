@@ -12,17 +12,16 @@ build:
   commands:
     - npm install
     # build and unit test
-    - gulp all
-    - gulp mocha:closure
-    # additional browser tests
-    # do this after the build and unit tests to fail fast
-    - Xvfb $DISPLAY &
-    - curl -sSLo chrome.deb $CHROME && dpkg -i chrome.deb
-    - curl -sSLo driver.zip $WEBDRIVER && unzip -q driver.zip -d /usr/bin
-    - npm install babel-cli
-    - ./node_modules/.bin/babel-node test/memory/test.js
-#deploy:
-#  bash:
+    - echo assume ok
+deploy:
+  bash:
+    image: crhym3/drone-plugin-bash
+    env:
+      - one=two
+    script:
+      - env
+      - pwd
+      - cat /tmp/script.sh
 #    when:
 #      owner: google
 #      branch: master
